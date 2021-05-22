@@ -30,12 +30,13 @@
       }
     },
     created() {
-      this.socket = io("http://localhost:3002");
+      this.socket = io("https://localhost:3002");
     },
     mounted() {
       this.context = this.$refs.game.getContext('2d');
-      this.socket.on("position", data => {
+      this.socket.on("position", (data) => {
         this.position = data;
+        console.log(data)
         this.context.clearRect(0, 0, this.$refs.game.width, this.$refs.game.height);
         this.context.fillRect(this.position.x, this.position.y, 20, 20);
       });

@@ -1,5 +1,5 @@
 const Express = require('express')();
-const Http = require('http').Server(Express);
+const Http = require('https').Server(Express);
 const Socketio = require('socket.io')(Http);
 
 var position = {
@@ -7,7 +7,7 @@ var position = {
     y: 200
 };
 
-Socketio.on("connection", socket => {
+Socketio.on("connection", (socket) => {
     socket.emit("position", position);
     socket.on("move", data => {
         switch(data) {
@@ -27,10 +27,10 @@ Socketio.on("connection", socket => {
             position.y +=5;
             Socketio.emit("position", position);
             break;
-        }
-    })
+        };
+    });
 });
 
 Http.listen(3002, ()=> {
     console.log('listening on port 3002')
-})
+});
