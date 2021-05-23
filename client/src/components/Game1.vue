@@ -17,6 +17,7 @@
 
 <script>
   import io from "socket.io-client"
+  
   export default {
     name: 'Game1',
     data() {
@@ -30,18 +31,18 @@
       }
     },
     created() {
-      this.socket = io("https://localhost:3002");
+      this.socket = io("http://localhost:3002");
     },
     mounted() {
       this.context = this.$refs.game.getContext('2d');
       this.socket.on("position", (data) => {
         this.position = data;
-        console.log(data)
         this.context.clearRect(0, 0, this.$refs.game.width, this.$refs.game.height);
+        this.context.fillStyle = "purple"
         this.context.fillRect(this.position.x, this.position.y, 20, 20);
       });
     }, 
-    methoods: {
+    methods: {
       move(direction) {
         this.socket.emit("move", direction);
       }

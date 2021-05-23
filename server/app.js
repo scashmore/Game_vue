@@ -1,6 +1,8 @@
-const Express = require('express')();
-const Http = require('https').Server(Express);
-const Socketio = require('socket.io')(Http);
+const express = require('express')();
+const http = require('http').Server(express);
+var cors = require("cors");
+const options = { cors: { origin: "*" } };
+const Socketio = require('socket.io')(http, options);
 
 var position = {
     x: 200,
@@ -31,6 +33,7 @@ Socketio.on("connection", (socket) => {
     });
 });
 
-Http.listen(3002, ()=> {
+
+http.listen(3002, ()=> {
     console.log('listening on port 3002')
 });
