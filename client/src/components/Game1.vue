@@ -6,12 +6,16 @@
           height="480" 
           style="border: 1px solid black">
         </canvas>
-        <p>
-          <button v-on:click="move('right')">Right</button>
-          <button v-on:click="move('left')">Left</button>
-          <button v-on:click="move('up')">Up</button>
-          <button v-on:click="move('down')">Down</button>
-        </p>
+        <div class="btns">
+          <button v-on:click="move('left')" class="left">←</button>
+          <div class="horizontal">
+          <button v-on:click="move('up')" class="up">↑</button>
+          <button v-on:click="move('down')" class="down">↓</button>
+          </div>
+          <button v-on:click="move('right')" class="right">→</button>
+        </div>
+          
+        
     </div>
 </template>
 
@@ -52,5 +56,25 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .btns {
+    display: flex;
+    flex-direction: row;
+    margin-left: 15%;
+  }
+  .horizontal {
+    display: flex;
+    flex-direction: column;
+  }
+  .left, .right{
+    width: 40px;
+    height: 30px;
+    margin-top: 17px;
+    margin-right: 2px;
+    margin-left: 2px;
+  }
+  .down, .up {
+    width: 40px;
+    height: 25px;
+    margin-top: 2px;
+  }
 </style>
