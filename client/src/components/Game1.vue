@@ -13,6 +13,10 @@
           <button v-on:click="move('down')" class="down">↓</button>
           </div>
           <button v-on:click="move('right')" class="right">→</button>
+        <input v-on:keydown.right="move('right')" 
+        v-on:keydown.left="move('left')" 
+        v-on:keydown.up="move('up')" 
+        v-on:keydown.down="move('down')">
         </div>
           
         
